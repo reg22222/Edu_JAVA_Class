@@ -1,18 +1,24 @@
-import java.util.*;//Scanner 클래스를 알려주기 위해
+import java.util.*;
 public class Exam_04 {
 	public static void main(String[] args) {
-		
-		//클래스에 에러가 나면 그 클래스가 뭔지 모른다는 것
 		Scanner in = new Scanner(System.in);
+		System.out.println("첫번째 수 입력 : ");
 		
-		System.out.println("이름을 입력 : ");
-		String name = in.next(); // in.next : 문자열을 입력받는다
-		System.out.println("임의의 수를 입력 : ");
-		int su = in.nextInt(); // in.nextInt : 정수를 입력받는다
+		int n1 = in.nextInt();
+		System.out.println("두번째 수 입력 :");
+		int n2 = in.nextInt();
 		
-		System.out.println("입력하신 이름은" + name);
-		
-		
-		
+		if (n1 < n2)
+		{
+			System.out.printf("%d가 더 크다",n2);
+		}
+		else if (n1>n2)
+		{
+			System.out.printf("%d이 더 크다",n1);
+		}
+		else
+		{
+			System.out.println("같다");
+		}
 	}
 }
