@@ -1,61 +1,27 @@
-import java.util.*;
-import java.io.*;
+
 public class Exam_07 {
-	public static void main(String[] args) throws IOException{
-		Scanner in = new Scanner(System.in);
-		
-		System.out.println("첫번째 수 :");
-		int n1 = in.nextInt();
-		System.out.println("두번째 수 :");
-		int n2 = in.nextInt();
-		System.out.println("산술연산자 : ");
-		char ch = (char)System.in.read();
-		
+	public static void main(String[] args) {
 		/*
-		if (ch == '+')
+		int i = 1;
+		int sum = 0;
+		while(i<=10)
 		{
-			System.out.printf("%d %c %d = %d",n1,ch,n2,(n1+n2));
-		}
-		else if (ch == '-')
-		{
-			System.out.printf("%d %c %d = %d",n1,ch,n2,(n1-n2));
-		}
-		else if (ch == '*')
-		{
-			System.out.printf("%d %c %d = %d",n1,ch,n2,(n1*n2));
-		}
-		else if (ch == '/')
-		{
-			System.out.printf("%d %c %d = %d",n1,ch,n2,(n1/n2));
-		}
-		else if (ch == '%')
-		{
-			System.out.printf("%d %c %d = %d",n1,ch,n2,(n1%n2));
-		}*/
-		//스위치 케이스엔 상수만 올 수 있음
-		
-		switch(ch) {
-		//byte, char, short, int, String 같은 자료형만 스위치에 올 수 있음
-		case '+':
-			System.out.printf("%d %c %d = %d",n1,ch,n2,(n1+n2));
-			break;
-		case '-':
-			System.out.printf("%d %c %d = %d",n1,ch,n2,(n1-n2));
-			break;
-		case '*':
-			System.out.printf("%d %c %d = %d",n1,ch,n2,(n1*n2));
-			break;
-		case '/':
-			System.out.printf("%d %c %d = %d",n1,ch,n2,(n1/n2));
-			break;
-		case '%':
-			System.out.printf("%d %c %d = %d",n1,ch,n2,(n1%n2));
-			break;
-		default:
-			System.out.println("산술연산자만 계산이 가능합니다");
-		
+			sum += i;
+			++i;
+			
 		}
 		
+		System.out.println("1부터 10까지의 합 : "+sum);*/
 		
+		int i = 1;
+		int sum = 0;
+		while(true)
+		{
+			sum += i;
+			if(sum>100) break;
+			++i;
+		}
+		System.out.println("1부터 합을 구해 100이 넘는 순간은"+i+"입니다.");
 	}
+
 }

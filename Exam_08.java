@@ -2,29 +2,19 @@ import java.util.*;
 public class Exam_08 {
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
+		int sum = 0;
 		
-		System.out.println("음식을 입력 : ");
-		String name = in.next();
-		
-		switch(name) {
-		case "짜장면": System.out.println("짜장면을 시키셨습니다. "); break;
-		case "짬뽕": System.out.println("짬뽕을 시키셨습니다. "); break;
-		case "우동": System.out.println("우동을 시키셨습니다. "); break;
-		case "볶음밥": System.out.println("볶음밥을 시키셨습니다. "); break;
-		default: System.out.println("잘못입력하셨습니다.");
+		int count = 0;
+		while(true)
+		{
+			System.out.println("임의의 수를 입력 : ");
+			int n = in.nextInt();
+			
+			if(n <1) break;
+			sum += n;
+			++count;
 		}
-		/*
-		System.out.println("1짜장면 2짬뽕 3우동 4볶음밥 : ");
-		int select = in.nextInt();
-		
-		switch(select) {
-		case 1:		System.out.println("짜장면을 시키셨습니다. "); break;
-		case 2:		System.out.println("짬뽕을 시키셨습니다. "); break;
-		case 3:		System.out.println("우동을 시키셨습니다. "); break;
-		case 4:		System.out.println("볶음밥을 시키셨습니다. "); break;
-		default :	System.out.println("잘못입력하셨습니다.");*/
-		
-		}
+		System.out.printf("합 : %d 평균 : %d",sum+sum/count);
 	}
 
-
+}
