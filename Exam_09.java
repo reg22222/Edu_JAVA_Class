@@ -2,39 +2,43 @@ import java.util.*;
 public class Exam_09 {
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
-		int s = 0;
-		int a = 0;
-		while(true)
-		{
-			System.out.println("분을 입력 : ");
-			int n = in.nextInt();
-			if(n >0)
-			{
-				if(n>= 0 && n < 60)
-				{
-					System.out.println("0시간 "+n+"분입니다.");
-					continue;
-				}
-				else if(n >= 60)
-				{
-					s = n / 60;
-					a = n % 60;
-					System.out.println(s + "시간"+a+"분입니다.");
-					continue;
-				}
-			}
-			else if(n < 0)
-			{
-				System.out.println("잘못 입력하셨습니다.");
-				continue;
-			}
-			else
-			{
-				System.out.println("프로그램 종료");
-				break;
-			}
-		}
 		
+		System.out.println("방의 갯수를 입력 : ");
+		int room = in.nextInt();
+		
+		System.out.println("1.입실 2.퇴실 3.보기 4.종료 : ");
+		int n = in.nextInt();
+		
+		String roomarr[] = new String[room];
+		String tsilarr[] = new String[room];
+		
+		switch(n) {
+		case 1: ipsil(room);
+		case 2:
+		case 3:
+		case 4:
+		default:
+		}
 	}
+	public static int ipsil(int su1) {
+		Scanner in = new Scanner(System.in);
+		
+		System.out.println("입실하실 방의 번호 : ");
+		int roomnum = in.nextInt();
+		if(roomnum > su1)
+		{
+			System.out.println("1호실부터"+su1+"호실까지만 입력 가능합니다.");
+			continue;
+		}
+		//else if(roomarr[roomnum-1] == "사용중")
+		{
+			System.out.println("이미 입실되어있는 호실입니다.");
+			continue;
+		}
+		//roomarr[roomnum-1] = "사용중";
+		System.out.println(roomnum+"호실에 입실하셨습니다.");
+	}
+	
+	//만들다 포기요 시간없음;;
 
 }

@@ -1,27 +1,38 @@
 
 public class Exam_07 {
 	public static void main(String[] args) {
-		/*
-		int i = 1;
-		int sum = 0;
-		while(i<=10)
+		star();
+		System.out.println("aaaaaaaaaaaaaaaa");
+		star(5); star(); star();
+		System.out.println("bbbbbbbb");
+		star(3.2); star(); star(); star();
+		System.out.println("ccccc");
+		star();
+		System.out.println("ddddd");
+		star(10,3);
+	}
+	public static void star(int a, int b) {
+		for(int i=0; i < b ; ++i)
 		{
-			sum += i;
-			++i;
-			
+			star(a);
 		}
-		
-		System.out.println("1부터 10까지의 합 : "+sum);*/
-		
-		int i = 1;
-		int sum = 0;
-		while(true)
+	}
+	public static void star() {
+		System.out.println("********************");
+	}
+	public static void star(int a) {
+		for(int i=0 ; i<a ; ++i)
 		{
-			sum += i;
-			if(sum>100) break;
-			++i;
+			System.out.print("*");
 		}
-		System.out.println("1부터 합을 구해 100이 넘는 순간은"+i+"입니다.");
+		System.out.println();
+	}
+	public static void star(double a) {
+		for(int i=0 ; i<a ; ++i)
+		{
+			System.out.print("*");
+		}
+		System.out.println();
 	}
 
 }
