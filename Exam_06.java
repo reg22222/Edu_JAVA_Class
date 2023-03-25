@@ -1,31 +1,43 @@
-import java.util.Scanner;
+import test.*;
+class A06{
+	private int a;
+	A06(){
+		a = 10;
+	}
+	public void disp() {
+		System.out.println("a = "+a);
+	}
+}
+
 
 public class Exam_06 {
 	public static void main(String[] args) {
-		intro();
-		int su1 = input();
-		int su2 = input();
-		int tot = sum(su1,su2);
-		output(su1,su2,tot);
+		//A06 ap = new A06();
+		//ap.disp();
+		//ap.a = 100;
+		//ap.disp();
+		test01 t1 = new test01();
+		t1.disp();
 		
+		//A06 ap = new A06(1);
 		
 	}
-	public static void intro() { //매개변수가 없고, 반환형도 없는 메소드
-		System.out.println("2개의 수를 입력받아 그 합을 구하는 프로그램");
-	}
+	/*
+	 * 접근제한자
+	 * -private		:클래스 내부에서만 접근 가능
+	 * -default		:같은 폴더(같은 패키지)에서 접근 가능, 아무것도 적지 않으면...
+	 * -protected	:상속관계에서는 public처럼, 상송관계가 아니면 default처럼 접근가능
+	 * -public		:누구나 접근 가능
+	 */
 	
-	public static void output(int a, int b, int c) { //매개변수가 있고, 반환형은 없는 메소드
-		System.out.printf("%d + %d = %d\n",a,b,c);
-	}
+	/*
+	 *  객체지향언어 4가지 속성
+	 *  -은닉화 : 멤버를 숨긴다.(외부에 보여주지 않음) 자바에서는 private 선어가 은닉화에 해당함. 자바에서는 멤머필드는 프라이빗, 메소드는 퍼블릿으로 
+	 *  -상속성
+	 *  -다형성
+	 *  -추상화
+	 */
 	
-	public static int sum(int a, int b) {//매개변수가 있고, 반환형도 있는 메소드
-		return a+b;
-	}
 	
-	public static int input() { //매개변수는 없고 반환형만 있는 메소드
-		Scanner in = new Scanner(System.in);
-		System.out.print("수를 입력 : ");
-		int su = in.nextInt();
-		return su;
-	}
+
 }

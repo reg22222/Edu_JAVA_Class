@@ -1,42 +1,44 @@
-import java.util.*;
-import java.io.*;
+class Bank{
+	private String name;
+	private double money;
+	private static float iyul;
+	//일반 멤버는 객체가 생성될때 메모리에 올라가지만, static멤버는 프로그램 시작시 메모리에 올라간다.
+	
+	static { //static 멤버만 초기값을 따로 부여해서 사용할 수 있다.
+		Bank.iyul = 0.04f; 
+	}
+	
+	public Bank(String name, double money, float iyul) {
+		this.name = name;
+		this.money = money;
+		Bank.iyul = iyul; //static으로 된 멤버필드는 공용이기때문에 클래스.필드명으로 씀(this 안씀)
+	}
+	
+	public void setIyul(float iyul) {
+		this.iyul = iyul;
+	}
+	
+	public void disp() {
+		System.out.println(name+"님의 현재 잔액은" + money + "원이고, 적용되는 이율은"+Bank.iyul*100+"%%입니다.");
+	}
+}
 public class Exam_08 {
-	public static void main(String[] args) throws IOException{
-		Scanner in = new Scanner(System.in);
-		System.out.println("1번째 수 입력 : ");
-		int n1 = in.nextInt();
-		System.out.println("2번쨰 수 입력 :");
-		int n2 = in.nextInt();
-		System.out.println("산술연산자 입력 : ");
-		char op = (char)System.in.read();
-		int tot = 0;
-		switch(op) {
-		case '+': tot = plus(n1,n2); break;
-		case '-': tot = minus(n1,n2); break;
-		case '*': tot = multi(n1,n2); break;
-		case '/': tot = div(n1,n2); break;
-		case '%': tot = mod(n1,n2); break;
-		default:
-			System.out.println("산술연산자가 아니라서 계산 불가");
-		}
-		System.out.printf("%d %c %d = %d\n",n1,op,n2,tot);
-
-		
+	public static void main(String[] args) {
+		Bank aaa = new Bank("aaa",1000.0,0.05f);
+		aaa.disp();
+		System.out.println("=================================");
+		Bank bbb = new Bank("bbb", 1000.0,0.03f);
+		//aaa.setIyul(0.03f);
+		aaa.disp();
+		bbb.disp();
+		System.out.println("=================================");
+		Bank ccc = new Bank("ccc",1000.0,0.04f);
+		//aaa.setIyul(0.04f);
+		aaa.disp();
+		//bbb.setIyul(0.04f);
+		bbb.disp();
+		ccc.disp();
+		System.out.println("=================================");
 	}
 
-	public static int plus(int a, int b) {
-		return a+b;
-	}
-	public static int minus(int a, int b) {
-		return a+b;
-	}
-	public static int multi(int a, int b) {
-		return a+b;
-	}
-	public static int div(int a, int b) {
-		return a+b;
-	}
-	public static int mod(int a, int b) {
-		return a+b;
-	}
 }

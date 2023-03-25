@@ -1,28 +1,124 @@
 import java.util.*;
-public class Exam_03 {
-	public static void main(String[] args) {
-		Scanner in = new Scanner(System.in);
+
+class Lotto{
+	
+	int Com[];
+	int select[];
+	
+	Lotto(){
 		
-		System.out.println("임의의 수 입력 : ");
-		int n = in.nextInt();
+		Com = new int[6];
+		select = new int[6];
 		
-		int jujang[] = new int[n];
+}
+	
+	void setCom() {
 		
-		for(int i = 2 ; i <= n ; ++i)
+		for( int i = 0; i < 6 ; ++i)
 		{
-			for(int j = 2; j <=i ; ++j)
-			{
-				if(i%j==0) // i를j로 나누었을때 나머지가 0이면 J는 나누어 진 수
-				{
-					if(i == j) //나누어진 J와 현재 비교대상인 I가 같은 수라면 솟수, 아니면 솟수아님
-					{
-						System.out.print(j+" ");
-					}
+			Com[i] = (int)(Math.random()*45)+1;
+			for(int j = 0; j < i ; ++j) {
+				if(Com[i] == Com[j]) {
+					i--;
 					break;
 				}
 			}
 		}
 		
 		
+		
+}
+	void setAutoselect() {
+	Scanner in = new Scanner(System.in);
+		
+	for( int i = 0; i < 6 ; ++i)
+	{
+		do {
+			System.out.println(i+1+"번째 수를 입력 :");
+			select[i] = in.nextInt();
+		}while(select[i]<1 || select[i]>45);
+		for(int j = 0; j < i ; ++j) {
+			if(select[i] == select[j]) {
+				i--;
+				break;
+				}
+			}
+		}
+		
+		
+		
+}
+	void getCount() {
+		int count = 0;
+		for(int i = 0 ; i<6 ; ++i)
+		{
+			for(int j = 0 ; j < 6 ; ++j) {
+				if(Com[i] == select[j] ){
+					count++;
+					break;
+				}
+			}
+		}
+		return count;	
+}
+	void dispCom() {
+		
+		System.out.println("컴퓨터 수 :");
+		
+		for(int i  = 0 ; i < 5 ; ++i)
+		{
+			System.out.println(Com[i] + " , ");
+		}
+		System.out.println(Com[5]);
+		
+		
+		
 	}
+	void dispselect() {
+		
+		System.out.println("컴퓨터 수 :");
+		
+		for(int i  = 0 ; i < 5 ; ++i)
+		{
+			System.out.println(select[i] + " , ");
+		}
+		System.out.println(select[5]);
+		
+		
+		
+	}
+	
+}
+
+public class Exam_03 {
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		Lotto lotto = new Lotto();
+		
+		while(true)
+		{
+			System.out.println("1.직접입력 2.자동입력 3.컴퓨터수 재설정 4.종료 : ");
+			int select = in.nextInt();
+			switch(select) {
+			case 1: 
+				lotto.setSelect();
+				System.out.println("맞춘갯수 : "+lotto.getCount() + "개입니다.");
+			case 2:
+				lotto.setAutoselect();
+				lotto.dispselect();
+			case 3:
+			case 4:
+
+				lotto.dispCom();
+				System.out.println("프로그램을 종료합니다.");
+				System.exit(0);
+			default:
+		
+		}
+		}
+		
+		
+		
+	}
+
 }
