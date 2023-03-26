@@ -1,64 +1,78 @@
-class A01{
+class Outer01{
 	//멤버필드
-	int a;
-	int b;
+	private int a;
+	private static int b;
 	
-	int c,d,e,f,g;
-	//JVM이 A01(){}(디폴트 생성자)를 만듦
-	//생성자
-	A01(){
-		a = 10;
+	//static 멤버 초기화
+	static {
 		b = 20;
-		c = 30;
-		d = 40;
-		e = 50;
-		f = 60;
-		g = 70;
-	}
-	A01(int a){
-		this(); //A01()생성자를 호출, 반드시 생성자 첫째줄에 나타나야 한다
-		this.a = a; //this : 클래스내의 멤버(대부분 필드)를 지칭할때 쓰는 예약어
 	}
 	
-	A01(int a, int b){
-		this(a);
-		//this.a = a; 
-		this.b = b;
+	//생성자
+	public Outer01() {
+		a = 10;
 	}
 	
 	//멤버메소드
-	void disp() {
-		System.out.println("a = "+ a);
-		System.out.println("b = "+ b);
-		//클래스 멤버에 매개변수간에 출돌이 나지 않는다면 this를 생략해서 사용할 수 있다.
+	public void disp() {
+		System.out.println("a = "+a);
+		System.out.println("b = "+b);
+		//System.out.println("c = "+c);
+		//밖에 있는 클래스에서는 내부 클래스의 멤버에 접근하지 못한다.
+	}
+	
+	//중첩클래스, Inner클래스(내부클래스)
+	class Inner01{
+		private int c;
 		
+		public Inner01() {
+			c = 30;
+		}
+		public void disp_in() {
+			//내부클래스에서는 밖의 클래스 멤버에 마음껏 접근 가능
+			System.out.println("a = "+a);
+			System.out.println("b = "+b);
+			System.out.println("c = "+c);
+		}
+		class Inner01_Inner{
+			
+		}
 	}
 }
 
 
 public class Exam_01 {
 	public static void main(String[] args) {
-		int a = 10; //자료형 변수명;
-		int[] arr = new int[3]; //자료형 배열명[] = new 자료형[개수];
-		A01 ap = new A01(10,20); //자료형(사용자가 정의한 자료형) 객체명(변수명X) = new 생성자 호출;
+		Outer01 ot = new Outer01();
+		
+		//Outer01.Inner01 oi = new Outer01.Inner01(); // 오류뜸 => 생성자에 의해 객체 선언되야됨
+		Outer01.Inner01 oi = ot.new Inner01(); //일반중첩클래스 객체만들기
+		
+		oi.disp_in();
 		
 		/*
-		 * 생성자
-		 * -클래스 이름과 동일한 메소드
-		 * -반환형이 없다(void조차 없다)
-		 * -멤버필드의 초기값을 주기 위해 만든다
-		 * -생성자를 구현하지 않으면 JVM이 default생성자를 만들어 낸다
-		 * -생성자가 하나라도 구현이 되었으면 default생성자 안만든다
-		 * -생성자로 메소드의 일부라서 오버로딩이 가능하다
-		 * -객체생성시 딱 한번 호출되는 메소드. 따라서, 직접 호출하지 못한다. 
+		 * 중첩클래스
+		 * -일반중첩클래스		:클래스안에 클래스를 만들어 사용		=> Outer01$Inner01
+		 * 					객체 생성 후 메모리에 올라가므로, 바깥클래스가 객체를 만들어야 사용 가능
+		 * -static 중첩클래스	:클래스안에 static클래스를 만들어 사용	=>Outer02$Inner02
+		 *					메모리에 미리 올라가기 때문에, 독립적으로 사용이 가능
+		 * -지역 중첩클래스		:메소드안에 클래스를 만들어 사용		=>Outer03$1Inner03
+		 * 					메소드 안에서만 사용 가능
+		 * -익명 중첩클래스		:객체를 생성시에 메소드를 오버라이드(재 정의)해서 사용할때 새로운 클래스를 만들게 되는데 그
+		 * 					클래스는 이름이 없다. 이때 생긴 클래스를 익명중첩클래스라고 한다.		=>Exam_04$1
+		 * 
+		 * 
+		 * 클래스멤버
+		 * -멤버필드
+		 * -생성자
+		 * -멤버메소드
+		 * -중첩클래스
+		 * 
+		 * 
 		 */
 		
-		// . : 참조연산자, 객체멤버에 접근하려는 연산자
-		ap.disp(); //메소드 호출
 		
-		ap.a = 100;
-		ap.b = 200;
-		//ap.A01(100);      생성자 직접 호출 불가
-		ap.disp();
+		
 	}
+
 }

@@ -1,60 +1,27 @@
-import java.util.*;
-
-class Inwon{
-	Scanner in = new Scanner(System.in);
-	String name;
-	int kor;
-	int eng;
-	int hap;
-	int rank;
-	
-	Inwon(String name, int kor, int eng){
-		this.name = name;
-		this.kor = kor;
-		this.eng = eng;
-		
-		
+//https://docs.oracle.com/javase/8/docs/api/index.html 자바API사이트
+class Outer04{
+	public void aaa() {
+		System.out.println("aaa메소드 실행중......");
 	}
-	
-	void disp() {
-		System.out.println(name + "님의 총점 :" + hap + "순위는 : "+rank+"등 입니다.");
+	public void bbb() {
+		System.out.println("ddd메소드 실행중......");
 	}
-	
+	public void ccc() {
+		System.out.println("ccc메소드 실행중......");
+	}
 }
-
-
 public class Exam_04 {
 	public static void main(String[] args) {
-		
-		Scanner in = new Scanner(System.in);
-		
-		
-		
-		System.out.println("인원수 입력 :");
-		int inwonsu = in.nextInt();
-		String name[] = new String[inwonsu];
-		int kor[] = new int[inwonsu];
-		int eng[] = new int[inwonsu];
-		
-		Inwon[] iw = new Inwon[inwonsu];
-		
-		for(int i = 0 ; i < 3 ; ++i)
-		{
-			System.out.println("이름을 입력 : ");
-			name[i] = in.next();
-			System.out.println(name[i] + "님의 국어점수 입력 : ");
-			kor[i] = in.nextInt();
-			System.out.println(name[i] + "님의 영어점수 입력 : ");
-			eng[i] = in.nextInt();
-			iw[i] = new Inwon(name,kor,eng);
-		}
-
-		
-		for(int i = 0 ; i < inwonsu; ++i) {
-			iw[i].disp();
+		Outer04 ot =  new Outer04() {
+			public void bbb() {
+				System.out.println("bbb메소드 실행중....");
+			}
 		}
 		
-		
+		ot.aaa();
+		ot.bbb();
+		ot.ccc();
 	}
 
 }
+

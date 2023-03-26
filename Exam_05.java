@@ -1,41 +1,87 @@
-import java.util.Scanner;
-
-class Member{
-	String name;
-	String tel;
-	Member(String name, String tel){
-		this.name = name;
-		this.tel = tel;	
-	}
+class A05 extends Object{ //원래 extends Object가 생략되어있음
 	
-	void disp() {
-		System.out.println(name+"님의 전화번호는 " + tel +"번입니다.");
-	}
 }
-
-
 public class Exam_05 {
 	public static void main(String[] args) {
-		Scanner in = new Scanner(System.in);
-		//3명 회원의 이름과 전화번호를 입력받아 관리해보자
-		//클래스 배열 만들기
-		//1. 객체의 갯수를 정의
-		Member[] mb = new Member[3];
 		
-		for(int i = 0 ; i < 3; ++i)
-		{
-			//2.각 객체를 생성하기
-			
-			System.out.println("이름을 입력 : ");
-			String name = in.next();
-			System.out.println("전화번호를 입력 : ");
-			String tel = in.next();
-			mb[i] = new Member(name, tel);
-		}
-		for(int i=0 ;i<3 ; ++i) {
-			mb[i].disp();
-		}
+		A05 ap = new A05();
+		System.out.println("ap.getClass = "+ap.getClass());
+		System.out.println("ap.toString() = "+ ap.toString());
+		System.out.println("ap ="+ap);
+		/*
+		 * 상속
+		 * -class Object
+		 * -키워드 : extends
+		 * -상속관계, 포함관계
+		 * -super 
+		 * 	   -부모클래스 멤버에 접근하고자 할때 
+		 * -super() 		// () : 메소드
+		 * 	   -상속관계에서 부모클래스의 멤버필드값을 받아오기 위해 부모클래스의 생성자를 통해 받아온다
+		 * 	   -지정하지 않으면, super()라고 부모의 default생성자를 호출하도록 되어 있다
+		 *     -이때, 부모클래스의 default생성자가 없으면 오류가 발생한다.
+		 * -오버라이드
+		 *   -부모의 메소드 이름을 그대로 적어 재정의 한 것
+		 *   -접근제한자법칙
+		 *      private < default < protected < public
+		 *      자식의 메소드는 부모의 메소드보다 반드시 크거나 같아야 한다
+		 *   -예외전가법칙
+		 *      부모에 없는 예외전가를 자식이 만들 수 없다.
+		 *      예외전가 : throws IOException와 같은거
+		 * -final 클래스
+		 *   - 이 클래스는 상속받을 수 없다.
+		 * -final 메소드
+		 * -toString
+		 * -protected
+		 * 
+		 * 모든 클래스는 Object클래스를 상속받음
+		 * 
+		 * C의 포인터는 메모리를 자기가 만들수도 있고 직접 가리킬수도 있는데
+		 * 자바는 JVM이 전부 관리해서 .toString()을 쓴다
+		 * 
+		 */
 		
+		/*
+		 * 자바에서 생략가능한것
+		 * -import java.lang.*
+		 * -default 생성자
+		 * -this
+		 * -extends Object
+		 * -객체명을 출력시 toString()값이 나온다.
+		 * -super()
+		 * 
+		 * 객체의 연산자
+		 * -자바에서 객체의 연산은 =(대입연산자) 밖에 없다.
+		 * -대입연산자도 같은 클래스이거나, 같은 클래스 타입(상속관계) 일때만 가능하다
+		 * 
+		 * 다형성
+		 * -다형성의 멤버필드 법칙
+		 *   -자식의 생성자로 부모의 객체를 만들 수 있다 : 업캐스팅(자동형변환)
+		 *   -업캐스팅된 부모객체로 자식의 객체를 만들 수 있다 : 다운캐스팅(강제형변환)
+		 * -다형성의 멤버메소드 법칙
+		 *   -자식이 부모의 메소드를 오버라이드 했다면, 업캐스팅 상태의 부모객체에서
+		 *    해당 메소드를 실행하면 자식의 메소드가 실행이 된다.
+		 *    
+		 * 추상화
+		 * -추상메소드 : 메소드의 이름만 정의하고 내용은 정의하지 않는 메소드
+		 *            반드시 추상메소드라고 정의해줘야 한다(abstract)
+		 * -추상클래스 : 추상메소드가 한개 이상 있는 클래스
+		 * 			   반드시 추상클래스라고 정의해줘야 한다
+		 *            추상클래스는 객체를 직접 생성하지 못한다.
+		 *            따라서, 익명중첩클래스로 만들거나, 업캐스팅해서 만들어 사용한다.
+		 *            
+		 * 인터페이스
+		 * -추상메소드의 집합
+		 * -멤버필드는 상수만, 메소드는 추상메소드만, 중첩클래스는 static만 가능
+		 * -서로 다른 두개의 클래스를 묶어서 사용할때도 인터페이스를 만들어 상속받아 쓰게 한다
+		 * -보통은 프로그램 설계를 할때 많이 사용
+		 * -다중상속을 위해 만든 클래스 (자바는 다중상속을 막음 - 클래스 두개를 동시에 상속받지못함)83라인
+		 * 
+		 * class A{}
+		 * 
+		 * class B extends A{}
+		 * 
+		 * class C extends A,B{} - (X)못함
+		 */
 	}
 
 }

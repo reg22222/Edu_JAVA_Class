@@ -1,30 +1,41 @@
-class A08{
-	private final int a; // private final int a = 0;
-	private static int b;
-	static {
-		//객체생성과 상관없이 프로그램내에서 한번 실행되는 구문
-		System.out.println("static구문 사용!!");
+class Point2d{
+	int x;
+	int y;
+	public Point2d() {
+		x = 100;
+		y = 125;
 	}
-	{
-		//객체생성시 생성자보다 먼저 불려가서 실행되는 구문
-		System.out.println("일반구문 사용!!");
-	}
-	public A08() {
-		a = 10;
-		System.out.println("default생성자 사용!!");
-	}
-	public A08(int a, int b){
-		this.a = a;
-		System.out.println("A08(int a, int b)생성자 사용!!");
-		
+	public void disp() {
+		System.out.println("좌표 : ["+x+","+y+"]");
 	}
 }
-
+class Point3d extends Point2d{
+	int z;
+	public Point3d() {
+		z = 150;
+	}
+	public void disp() {
+		System.out.println("좌표 : ["+x+","+y+","+z+"]");
+	}
+}
 public class Exam_09 {
 	public static void main(String[] args) {
-		A08 ap = new A08();
-		A08 bp = new A08(10,20);
+		Point3d p2 = new Point3d();
+		Point2d p3 = p2;
+		p2.disp();
+		//자식의 생성자로 부모의 객체를 만들 수 있다.
+		//업캐스팅 : 자동형변환
 		
+		/*
+		Point2d ap = new Point2d();
+		Point2d bp = ap; //같은 클래스이므로 대입연산이 가능하다
+		//ap.x와 bp.x는 동일한 메모리에 있는 변수다
+		
+		ap.x = 1000; 
+		//ap.y와 bp.y는 동일한 메모리에 있는 변수다
+		bp.y = 2000;
+		ap.disp();
+		bp.disp();*/
 	}
 
 }

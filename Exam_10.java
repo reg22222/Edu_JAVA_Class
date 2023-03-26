@@ -1,18 +1,51 @@
-//import java.lang.*; //JVM이 제일먼저 자동으로 호출하는 패키지
-class A10{
-	public final static double PI = 3.141592;
+import java.util.*;
+class Protoss{
+	public void attack() {
+		System.out.println("공격하는 기능을 구현!!");
+	}
+	public void move() {
+		System.out.println("이동하는 기능을 구현!!");
+	}
+	
+}
+class Zealot extends Protoss{
+	public void attack() {
+		System.out.println("질럿이 공격을 합니다!!");
+	}
+	public void move() {
+		System.out.println("질럿이 이동을 합니다!!");
+	}
+}
+class Dragon extends Protoss{
+	public void attack() {
+		System.out.println("드라곤이 공격을 합니다!!");
+	}
+	public void move() {
+		System.out.println("드라곤이 이동을 합니다!!");
+	}
 }
 public class Exam_10 {
-	public static void main(String[] args) { //JVM이 먼저 실행시키는게 main이기에 static을 써야함
-		//Math.PI = 111;   //final필드라서 못고친다.
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
 		
+		Protoss pro;
 		
-		//System.out.println("반지름이 5인 원의 넓이 : " + 5*5*A10.PI);
-		System.out.println("반지름이 5인 원의 넓이 : " + 5*5*Math.PI);
-		//static멤버라서 클래스 이름으로 접근한다.
-		//접근제한자가 public이라서 어디서든 접근이 가능함(import만 되어 있으면)
-		//상수선언 : public static final 또는 public final static
+		System.out.println("1.질럿 2.드라곤 : ");
+		int select1 = in.nextInt();
+		System.out.println("1.공격 2.이동 :");
+		int select2 = in.nextInt();
 		
-		//
+		if(select1 == 1) {
+			pro = new Zealot(); //질럿을 업캐스팅
+		}
+		else {
+			pro = new Dragon(); //드래곤을 업캐스팅
+		}
+		if(select2 == 1) {
+			pro.attack();
+		}else {
+			pro.move();
+		}
 	}
+
 }
