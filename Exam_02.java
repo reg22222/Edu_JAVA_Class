@@ -1,35 +1,37 @@
-class Outer02{
-	private int a;
-	private static int b;
-	
-	static {
-		b = 20;
-	}
-	public Outer02(){
-		a = 10;
-	}
-	public void disp() {
-		System.out.println("a = "+a);
-		System.out.println("b = "+b);
-		
-	}
-	static class Inner02{
-		private int c;
-		public Inner02() {
-			c = 30;
-		}
-		public void disp_in() {
-			//System.out.println("a = "+a);
-			//static 중첩 클래스는 바깥 클래스의 멤버중 Static 멤버만 사용 가능
-			System.out.println("b = "+b);
-			System.out.println("c = "+c);
-		}
-	}
-}
+import java.util.*;
+
 public class Exam_02 {
 	public static void main(String[] args) {
-		Outer02 ot = new Outer02();
-		Outer02.Inner02 oi = new Outer02.Inner02();
+		Scanner in = new Scanner(System.in);
+
+		System.out.println("년도 : ");
+		int y = in.nextInt();
+		System.out.println("월 : ");
+		int m = in.nextInt();
+		
+		Calendar cal = Calendar.getInstance();
+		cal.set(y,m-1,1);
+		
+		int week = cal.get(Calendar.DAY_OF_WEEK);
+		int lastDay = cal.getActualMaximum(Calendar.DAY_OF_MONTH); //이달의 마지막날을 표시
+		
+		System.out.println("일\t월\t화\t수\t목\t금\t토");
+		
+		for(int i = 1 ; i<week; ++i) {
+			System.out.print("\t");
+		} //첫날이 나올때까지 공백을 채워서 첫날의 요일 찾는거
+		
+		for(int i=1 ;i<=lastDay;++i) {
+			System.out.print(i+"\t");
+			week++;
+			if(week>7) {
+				week = 1;
+				System.out.println();
+			}
+		}
+		
+		
+		
 		
 	}
 
