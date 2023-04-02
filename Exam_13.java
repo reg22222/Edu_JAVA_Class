@@ -1,26 +1,32 @@
-import java.util.*;
-import java.text.*;
+import java.io.*;
 public class Exam_13 {
-	public static void main(String[] args) {
-		Date date = new Date();
+	public static void main(String[] args) throws IOException {
 		
-		System.out.println("date  = "+date);
+		File dir = new File("D:\\곽정근\\study\\day08");
+		File file = new File(dir,"aaa.txt");
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
-		/*
-		 * yy : 2자리년도, yyyy ; 4자리년도
-		 * MM : 월
-		 * dd : 일
-		 * HH : 하루를 24시간으로 나눠서 표시
-		 * mm : 분
-		 * ss : 초
-		 * sss : 밀리세컨드
-		 */
-		System.out.println(sdf.format(date));
+		file.delete();		//해당객체의 파일을 바로 삭제
 		
-		int money = 10000000;
-		DecimalFormat df = new DecimalFormat("###,###");
-		System.out.println("현재 가진 돈 : "+df.format(money));
+		if(file.createNewFile()) {
+			//파일이 없으면 만들고 true, 있으면 false를 반환
+			System.out.println("파일을 만들었습니다.");
+		}else {
+			System.out.println("파일이 이미 존재합니다.");
+		}
+		
+		 File imsi = File.createTempFile("temp0", ".txt",dir);
+		 //임시 파일 만들기
+		 imsi.deleteOnExit();		//프로그램 종료시 파일 삭제
+		 
+		 try {
+			 Thread.sleep(5000);
+		 }catch(Exception e) {}
+		 //5초뒤 파일 삭제
+		 
+		 
+
+		
+		
 	}
 
 }

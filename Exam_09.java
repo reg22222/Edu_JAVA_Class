@@ -1,41 +1,51 @@
-class Point2d{
-	int x;
-	int y;
-	public Point2d() {
-		x = 100;
-		y = 125;
+import java.util.*;
+class Mex extends Exception{
+	
+	/**
+	 * 국어점수가 0~100사이가 아닐때의 예외처리
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private String message;
+	
+	public Mex(String msg) {
+		super(msg);
 	}
-	public void disp() {
-		System.out.println("좌표 : ["+x+","+y+"]");
+	
+	@Override
+	public String getMessage() {
+		
+		message = super.getMessage() + "점수는 0점에서 100점 사이값만 넣어야 합니다.";
+		return message;
 	}
-}
-class Point3d extends Point2d{
-	int z;
-	public Point3d() {
-		z = 150;
-	}
-	public void disp() {
-		System.out.println("좌표 : ["+x+","+y+","+z+"]");
-	}
+	
+	
+	
 }
 public class Exam_09 {
 	public static void main(String[] args) {
-		Point3d p2 = new Point3d();
-		Point2d p3 = p2;
-		p2.disp();
-		//자식의 생성자로 부모의 객체를 만들 수 있다.
-		//업캐스팅 : 자동형변환
+		Scanner in = new Scanner(System.in);
 		
-		/*
-		Point2d ap = new Point2d();
-		Point2d bp = ap; //같은 클래스이므로 대입연산이 가능하다
-		//ap.x와 bp.x는 동일한 메모리에 있는 변수다
 		
-		ap.x = 1000; 
-		//ap.y와 bp.y는 동일한 메모리에 있는 변수다
-		bp.y = 2000;
-		ap.disp();
-		bp.disp();*/
+		
+			try {
+				
+				System.out.println("국어점수 입력 : ");
+				int n = in.nextInt();
+				if(n < 0 || n > 100) {
+					throw new Mex("국어");
+				}
+				System.out.println("입력하신 국어 점수 : "+n);
+			}catch(Mex e) {
+				System.err.println(e.getMessage());
+			}catch(Exception e) {
+				e.printStackTrace();
+				//예외발생시 예외발생된 시점까지 사용된 모든 메소드를 반환해준다
+			}
+		
+		
+		
+	
 	}
 
 }

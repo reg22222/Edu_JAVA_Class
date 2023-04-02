@@ -1,25 +1,42 @@
-interface A11{
-	public static final int A = 1;
-	public static int B = 2;
-	public final int C = 3;
-	public int D = 4; // static final이 생략됨
-	int E = 5; //static final이 생략됨
-	//private int F = 6; //public, static & final자리인데 private가 와서 에러 뜸
-	//인터페이스의 멤버필드는 무조건 상수(final)
-	public abstract void disp();
-	public void disp2(); //{System.out.println("aaa");}인터페이스 안에 있는 메소드는 추상메소드만 쓸수있음
-	void disp3();
-	//private void disp4(); 에러남
-	//추상클래스의 모임이라 생성자가 없음
-	class Inner11{} //추상중첩클래스 : 독립적으로 쓸수있음
+import java.util.*;
+import java.text.*;
+class MyThread extends Thread{
+	
+	private Date date;
+	private SimpleDateFormat sdf;
+	
+	public MyThread() {
+		sdf = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
+	}
+	
+	
+	public void run() {
+		//System.out.println("정보 :  "+MyThread.currentThread());
+		while(true) {
+			date = new Date();
+			System.out.println("현재시각 : "+ sdf.format(date));
+			try {
+				Thread.sleep(1000); //밀리세컨드 단위로 숫자를 넣어준다
+			}catch(InterruptedException e) {}
+			
+		}
+		
+	}
+	
 }
 public class Exam_11 {
 	public static void main(String[] args) {
-		System.out.println("A11.A = " + A11.A);
-		//A11.A = 100;  //final멤버라 수정 못함
-		//A11.B = 100;
-		System.out.println("A11.C = "+A11.C);
+		MyThread th = new MyThread();
+		th.setDaemon(true); 		//main이 끝나면 th객체는 끝난다. -> 대몬관계
+		th.setName("홍길동");			//스레드의 이름
+		th.setPriority(10); 		//priority  : 1~10 -> 1이 우선순위 제일 느림, 10이 제일 빠름, 5가 default
+		th.start();
+		try {
+			Thread.sleep(5000);
+			th.join(5000);	//th객체를 5초간 실행시켜주세요(연결시켜주겠다는것) 
+		}catch(InterruptedException e) {}
 		
-		A11.Inner11 ai = new A11.Inner11();
+		System.out.println(Thread.currentThread());		//currentThread() : 현재 상태를 보는 것
 	}
+
 }

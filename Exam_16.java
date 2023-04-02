@@ -1,28 +1,23 @@
-import java.util.*;
+import java.io.*;
 public class Exam_16 {
-	public static void main(String[] args) {
-		int arr[] = new int[6];
+	public static void main(String[] args) throws IOException{
 		
-		for(int i = 0; i < arr.length ; ++i)
-		{
-			arr[i] = (int)Math.random()*45+1;
-			for(int j = 0 ;j < i ; ++i)
-			{
-				if(arr[i] == arr[j])
-				{
-					
-					--i;
-					break;
-				}
-			}
-			
-		}
-		for(int i = 0; i < arr.length-1; ++i)
-			System.out.println(arr[i] + ',');
+		File dir = new File("D:\\°ûÁ¤±Ù\\study\\day08");
+		File file = new File(dir,"bbb.txt");
 		
-	}
-	System.out.println(arr[arr.length-1]);
-
+		int a = 10;
+		String msg = "¾È³çÇÏ¼¼¿ä!!";
+		double b = 10.23;
+		FileOutputStream fos = new FileOutputStream(file);
+		BufferedOutputStream bos = new BufferedOutputStream(fos);
+		DataOutputStream dos = new DataOutputStream(bos);
+		
+		dos.writeInt(a);
+		dos.writeDouble(b);
+		dos.writeUTF(msg);
+		
+		dos.close(); //flush()
+		
 	}
 
 }

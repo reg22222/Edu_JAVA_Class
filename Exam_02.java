@@ -1,38 +1,44 @@
-import java.util.*;
+import java.util.Hashtable;
 
 public class Exam_02 {
-	public static void main(String[] args) {
-		Scanner in = new Scanner(System.in);
-
-		System.out.println("년도 : ");
-		int y = in.nextInt();
-		System.out.println("월 : ");
-		int m = in.nextInt();
+		public static void main(String[] args) {
+		Hashtable<String, String> map = new Hashtable<>();
 		
-		Calendar cal = Calendar.getInstance();
-		cal.set(y,m-1,1);
+		map.put("유재석","개그맨");
+		map.put("류현진","야구선수");
+		map.put("손흥민","축구선수");
+		map.put("김종국","가수");
 		
-		int week = cal.get(Calendar.DAY_OF_WEEK);
-		int lastDay = cal.getActualMaximum(Calendar.DAY_OF_MONTH); //이달의 마지막날을 표시
 		
-		System.out.println("일\t월\t화\t수\t목\t금\t토");
 		
-		for(int i = 1 ; i<week; ++i) {
-			System.out.print("\t");
-		} //첫날이 나올때까지 공백을 채워서 첫날의 요일 찾는거
-		
-		for(int i=1 ;i<=lastDay;++i) {
-			System.out.print(i+"\t");
-			week++;
-			if(week>7) {
-				week = 1;
-				System.out.println();
-			}
+		if(map.containsKey("손흥민")) {
+			System.out.println("손흥민의 저희 멤버입니다.");
 		}
 		
 		
 		
+		Enumeration<String> enu = map.keys();   	//키값을 모두 가져오기
+		while(enu.hasMoreElements()) {		//hasNext() 과 동일한 명령
+			Object obj = enu.nextElement();
+			String key = (String)obj;
+			Object obj2 = map.get(key);		//업캐스팅
+			String value = (String)obj2;	//다운캐스팅
+			System.out.println(key+"님의 직업 : "+ value);
+		}
 		
+		/*
+		System.out.println("김종국의 직업 : "+ map.get("김종국")); //map.get(키값) : 그 키의 해당되는 밸류값이 나옴
+		
+		/*
+		System.out.println("map의 크기 : " +map.size());
+		map.remove("김종국");			//삭제
+		System.out.println("map = "+map);
+		
+		/*
+		System.out.println("map = "+map);
+		map.put("김종국","개그맨");
+		System.out.println("map = "+map);		//키값이 같고 밸류값이 다르면 밸류값이 수정이 된다
+		*/
 	}
 
 }
